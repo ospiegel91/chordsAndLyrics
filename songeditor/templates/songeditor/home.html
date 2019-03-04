@@ -1,4 +1,19 @@
 {% extends 'songeditor/base.html' %}
-{% block content %}
-    <h1>HOME PAGE</h1>
+{% block homePage %}
+
+    <div class="menuOfSongs">
+        <a class="darkBlueFont" href="/songeditor/newsong">Start New Song Now!</a>
+        <h3 class="inMenuHeading">Your previously saved songs:</h3>
+
+        {% for song in song_list%}
+        {% if song.direction == "ltr" %}
+        <a class="losadingOption" href="/songeditor/loadedsong/{{ song.id }}">{{ song.title }}</a>
+        {% else %}
+        <a class="loadingOption" href="/heb/songeditor/loadedsong/{{ song.id }}">{{ song.title }}</a>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+
+
 {% endblock %}

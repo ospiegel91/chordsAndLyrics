@@ -1,4 +1,17 @@
 {% extends 'songeditor/base.html' %}
-{% block content %}
-    <h1>New Song!!! worked</h1>
+{% block newSongForm %}
+
+         <form method="post" action="/songeditor/newsong/editNew/" id="newSongFormId" class="newSongForm">{% csrf_token %}
+          <div class="form-group">
+            <label for="song_title_input">Title:</label>
+            <input type="text" name="song_title_input" class="form-control" id="song_title_input" placeholder="song title">
+          </div>
+          <div class="form-group">
+            <label for="song_lyrics_input">Paste Song</label>
+            <textarea class="form-control" name="song_lyrics_input" id="song_lyrics_input" rows="10"></textarea>
+          </div>
+        <button class="btn btn-outline-primary" type="submit">Process lyrics and begin writing chords!</button>
+    </form>
+
+
 {% endblock %}

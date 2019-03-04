@@ -31,6 +31,7 @@ DEBUG = True
 
 INSTALLED_APPS = [
     'songeditor.apps.SongeditorConfig',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -89,9 +90,9 @@ WSGI_APPLICATION = 'chordsAndLyrics.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'billboard_databa',
-        'USER': 'ospiegel51191',
-        'PASSWORD': 'VBHP7YZiDquspJJ',
+        'NAME': 'chordsandlyrics',
+        'USER': 'ospiegel',
+        'PASSWORD': 'hard2figureout',
         'HOST':'db4free.net',
     }
 }
@@ -110,6 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+LOGIN_REDIRECT_URL = '/songeditor'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/

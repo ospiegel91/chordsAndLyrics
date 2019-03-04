@@ -1,0 +1,27 @@
+{% extends 'songeditor/base.html' %}
+{% block editNewSong %}
+<nav class="toolsBar">
+    <div class="chordInputContainer"><input name="chord" id="chordInput" class="chordsSelector"  placeholder="select chord:" type="text" /></div>
+    <button id="eraserButton"><i class="fas fa-eraser"></i></button>
+    <button id="changeDirButton"><i class="fas fa-arrows-alt-h"></i></button>
+    <img class="autoScrollImg" src="https://static.thenounproject.com/png/54414-200.png"/>
+    <div class="save_load_contianer">
+        <button id="saveBtn" class="saveLoadBtn">save &nbsp</button>
+    </div>
+</nav>
+<div class="blackDividerLine"></div>
+<h2><input class="title_input" type="text" value="{{ title }}"></h2>
+{% for line in lyrics%}
+<div class="lyrics_line_block">
+    <div class="lyric_block">
+        <button class="removeBlockButton"><i class="fas fa-trash-alt"></i></button>
+        <div class="chordsBlock">
+        </div>
+    </div>
+    <div class="lyric_block">
+        <button class="addLineButton">+</button>
+        <input class="lyric_input" type="text" value="{{ line }}">
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,5 +1,5 @@
 {% load staticfiles %}
-<HTML>
+<HTML dir="ltr">
 
 <head>
     <meta charset="utf-8" />
@@ -9,11 +9,12 @@
         <title>song-editor-home</title>
     {% endif %}
     <!-- cdn links -->
-    <!--<script src="https://fb.me/react-0.14.0.js"></script>-->
-    <!--<script src="https://fb.me/react-dom-0.14.0.js"></script>-->
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser.min.js"></script>-->
+    <!-- <script src="https://fb.me/react-0.14.0.js"></script>
+    <script src="https://fb.me/react-dom-0.14.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser.min.js"></script> -->
 
-
+    <!--- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
@@ -22,36 +23,58 @@
     <!-- css file -->
     <!--<link rel="stylesheet" href="./style.css">-->
     <!-- font -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Assistant|Nunito+Sans" rel="stylesheet">
     <!-- Base Template Style Sheet -->
     <link href="{% static './css/base.css'%}" rel="stylesheet" type="text/css">
+
+    <!-- awesomeComplete -->
+    <link href="{% static './css/awesomplete.css'%}" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <div class="outerContainer">
-        <h1>Chords & Lyrics</h1>
+        <h1 class="appHeader">Chords & Lyrics</h1>
         <nav class="topNavBar">
-            <button class="navBarBtn">Home</button>
-            <button class="navBarBtn">About</button>
-            <button class="navBarBtn">Register</button>
-            <button class="navBarBtn">Login</button>
-            <button class="navBarBtn" >Logout</button>
+            {% if user.is_authenticated %}
+            <a href="/songeditor" class="btn btn-outline-primary navBarBtn">Home</a>
+            <a href="#" class="navBarBtn btn btn-outline-info">About</a>
+            <a href="/logout" class="navBarBtn btn btn-outline-secondary" >Logout</a>
+            {% else %}
+            <a href="#" class="navBarBtn btn btn-outline-info">About</a>
+            <a href="/register" class="navBarBtn btn btn-outline-secondary">Register</a>
+            <a href="/login" class="navBarBtn btn btn-outline-secondary">Login</a>
+            {% endif %}
         </nav>
+        {% if user.is_authenticated %}
         <div class="container">
-           {% block content %}{% endblock %}
+            {% block homePage %}{% endblock %}
+            {% block newSongForm %}{% endblock %}
+            {% block editNewSong %}{% endblock %}
+            {% block logoutUser %}{% endblock %}
+            {% block loadedSong %}{% endblock %}
+
         </div>
+        {% else %}
+        <div class="container">
+            {% block registerNewUser %}{% endblock %}
+            {% block loginUser %}{% endblock %}
+
+        </div>
+        {% endif %}
     </div>
 
-    
+
     <!-- jquery file -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- js file -->
     <!--<script type="text/babel" src="./logic.js"></script>-->
     <script src="{% static './js/base.js'%}"></script>
 
-        <!-- Optional JavaScript -->
+    <!-- awesomeComplete -->
+    <script src="{% static './js/awesomplete.js'%}"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
