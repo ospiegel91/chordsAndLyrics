@@ -18,6 +18,7 @@ $(document).ready(function () {
         $(".chordsBlock").click(placeChord);
         $("#eraserButton").click(turnEraserOnOff);
         $("#saveBtn").click(saveSong);
+        $(".newChord").click(onChordClickEvents);
     }
 
     function addEmptyNewLine(e){
@@ -63,6 +64,22 @@ $(document).ready(function () {
 
 
     }
+    
+    const homePointerHand = $(".pointerContainer");
+    let homePointerHandState = 0;
+    setInterval(appearDisppear, 1200, homePointerHand);
+    function appearDisppear(domElement){
+        if(homePointerHandState==0){
+            domElement.removeClass("invisibleClass")
+            domElement.addClass("visibleClass")
+            homePointerHandState = 1;
+        }else{
+            domElement.removeClass("visibleClass")
+            domElement.addClass("invisibleClass")
+            homePointerHandState = 0;
+        }
+    }
+
 
     function removeThisLyricBlock(e){
         let event_lyrics_block = e.target.parentElement.parentElement.parentElement;
@@ -113,8 +130,32 @@ $(document).ready(function () {
         if(isEraserOn==1){
             event.target.remove();
             return;
+        }else{
+            let chordClickedOn =  event.target.textContent;
+            console.log(chordClickedOn);
+            checkIfChordIsPlayable(chordClickedOn);
         }
 
+    }
+
+    function playChord(chordToBePlayed){
+        var audioElement = document.createElement("audio");
+        var head = document.getElementsByTagName('body')[0];
+        audioElement.type = "audio/mp3";
+        audioElement.src = `/static/chords/mp3/${chordToBePlayed}.mp3`;
+        audioElement.id = `${chordToBePlayed}`;
+        audioElement.autoplay = true;
+        audioElement.style.display = "none";
+        head.appendChild(audioElement);
+    }
+
+    function checkIfChordIsPlayable(clickedChord){
+        const playableChords = ["Am","Em","G"];
+        playableChords.forEach(function(chord) {
+            if(chord==clickedChord){
+                playChord(clickedChord);
+            }
+        });
     }
 
     function turnEraserOnOff(){
@@ -178,9 +219,9 @@ $(document).ready(function () {
             });
         });
 
-        new Awesomplete(input, {
-            list: allChordVariationsWithBases
-        });
+//        new Awesomplete(input, {
+//            list: allChordVariationsWithBases
+//        });
     }
 
     function prepDataForSave(){

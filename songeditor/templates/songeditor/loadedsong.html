@@ -2,11 +2,60 @@
 {% block loadedSong %}
 <nav class="toolsBar">
     <div class="chordInputContainer"><input name="chord" id="chordInput" class="chordsSelector"  placeholder="select chord:" type="text" /></div>
-    <button id="eraserButton"><i class="fas fa-eraser"></i></button>
+    <button id="eraserButton"><i class="material-icons">delete_forever</i></button>
     <img class="autoScrollImg" src="https://static.thenounproject.com/png/54414-200.png"/>
+    <p class="playableChordLabel">Select playable chord:</p>
+    <div  class="playableChordsSelector">
+        <select class="playableChordBtn" id="selectRoot">
+            <option value="C">C</option>
+            <option value="C#">C#</option>
+            <option value="Cb">Cb</option>
+            <option value="D">D</option>
+            <option value="D#">D#</option>
+            <option value="Db">Db</option>
+            <option value="E">E</option>
+            <option value="E#">E#</option>
+            <option value="Eb">Eb</option>
+            <option value="F">F</option>
+            <option value="F#">F#</option>
+            <option value="Fb">Fb</option>
+            <option value="G">G</option>
+            <option value="G#">G#</option>
+            <option value="Gb">Gb</option>
+            <option value="A">A</option>
+            <option value="A#">A#</option>
+            <option value="Ab">Ab</option>
+            <option value="B">B</option>
+            <option value="B#">B#</option>
+            <option value="Bb">Bb</option>
+        </select>
+        <select class="playableChordBtn" id="selectChordExtension">
+            <option value="">None</option>
+            <option value="m">m</option>
+            <option value="4">4</option>
+            <option value="sus4">sus4</option>
+            <option value="5">5</option>
+            <option value="5+">5+</option>
+            <option value="5-">5-</option>
+            <option value="6">6</option>
+            <option value="m6">m6</option>
+            <option value="6">maj7</option>
+            <option value="mMaj7">mMaj7</option>
+            <option value="7">7</option>
+            <option value="m7">m7</option>
+            <option value="9">9</option>
+            <option value="m9">m9</option>
+            <option value="11">11</option>
+            <option value="13">13</option>
+            <option value="7/9">7/9</option>
+            <option value="6/9">6/9</option>
+            <option value="dim">dim7 (°)</option>
+            <option value="ø">ø (m7b5)</option>
+        </select>
+    </div>
     <div class="save_load_contianer">
-        <button id="saveBtn" class="saveLoadBtn">save &nbsp</button> &nbsp / &nbsp
-        <button class="saveLoadBtn">load &nbsp</button>
+        <button id="saveBtn" class="saveLoadBtn">save &nbsp</button> 
+        
     </div>
 </nav>
 <div class="blackDividerLine"></div>

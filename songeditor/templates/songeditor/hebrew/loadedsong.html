@@ -1,10 +1,10 @@
-{% extends 'songeditor/base.html' %}
-{% block editNewSong %}
+{% extends 'songeditor/hebrew/base.html' %}
+{% block loadedSong %}
 <nav class="toolsBar">
-    <div class="chordInputContainer"><input name="chord" id="chordInput" class="chordsSelector"  placeholder="select chord:" type="text" /></div>
-    <button id="eraserButton"><i class="material-icons">delete_forever</i></button>
-    <img class="autoScrollImg" src="https://static.thenounproject.com/png/54414-200.png"/>
-    <p class="playableChordLabel" >Select playable chord:</p>
+    <div class="chordInputContainer"><input name="chord" id="chordInput" class="chordsSelector"  placeholder="בחר אקורד:" type="text" /></div>
+    <button style="margin-right: 1.5%; margin-left: 0;" id="eraserButton"><i class="material-icons">delete_forever</i></button>
+    <img style="margin-right: 7%; margin-left:0;" class="autoScrollImg" src="https://static.thenounproject.com/png/54414-200.png"/>
+    <p class="playableChordLabel">בחר אקורד מתנגן:</p>
     <div class="playableChordsSelector">
         <select class="playableChordBtn" id="selectRoot">
             <option value="C">C</option>
@@ -53,22 +53,25 @@
             <option value="ø">ø (m7b5)</option>
         </select>
     </div>
-    <div class="save_load_contianer">
-        <button id="saveBtn" class="saveLoadBtn">save &nbsp</button>
+    <div style="margin-right: 7%; margin-left: 1%;" class="save_load_contianer">
+        <button id="saveBtn" class="saveLoadBtn">שמור &nbsp</button> 
     </div>
 </nav>
 <div class="blackDividerLine"></div>
 <h2><input class="title_input" type="text" value="{{ title }}"></h2>
-{% for line in lyrics%}
+{% for block in lyric_blocks%}
 <div class="lyrics_line_block">
     <div class="lyric_block">
         <button class="removeBlockButton"><i class="fas fa-trash-alt"></i></button>
         <div class="chordsBlock">
+            {% for chord in block.chords %}
+                <button style="left: {{ chord.left }}"class="newChord">{{ chord.text }}</button>
+            {% endfor %}
         </div>
     </div>
     <div class="lyric_block">
         <button class="addLineButton">+</button>
-        <input class="lyric_input" type="text" value="{{ line }}">
+        <input class="lyric_input" type="text" value="{{ block.lyrics }}">
     </div>
 </div>
 {% endfor %}

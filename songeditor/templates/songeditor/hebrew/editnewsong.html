@@ -1,10 +1,10 @@
-{% extends 'songeditor/base.html' %}
+{% extends 'songeditor/hebrew/base.html' %}
 {% block editNewSong %}
-<nav class="toolsBar">
+<nav dir="ltr" class="toolsBar">
     <div class="chordInputContainer"><input name="chord" id="chordInput" class="chordsSelector"  placeholder="select chord:" type="text" /></div>
     <button id="eraserButton"><i class="material-icons">delete_forever</i></button>
-    <img class="autoScrollImg" src="https://static.thenounproject.com/png/54414-200.png"/>
-    <p class="playableChordLabel" >Select playable chord:</p>
+    <img style="margin-right: 7%; margin-left:0;" class="autoScrollImg" src="https://static.thenounproject.com/png/54414-200.png"/>
+    <p class="playableChordLabel">בחר אקורד מתנגן:</p>
     <div class="playableChordsSelector">
         <select class="playableChordBtn" id="selectRoot">
             <option value="C">C</option>
@@ -53,8 +53,9 @@
             <option value="ø">ø (m7b5)</option>
         </select>
     </div>
-    <div class="save_load_contianer">
-        <button id="saveBtn" class="saveLoadBtn">save &nbsp</button>
+
+    <div style="margin-right: 7%; margin-left: 1%;" class="save_load_contianer">
+        <button id="saveBtn" class="saveLoadBtn">שמור &nbsp</button>
     </div>
 </nav>
 <div class="blackDividerLine"></div>

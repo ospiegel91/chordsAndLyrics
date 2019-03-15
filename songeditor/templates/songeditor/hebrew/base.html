@@ -1,5 +1,5 @@
 {% load staticfiles %}
-<HTML dir="ltr">
+<HTML dir="rtl">
 
 <head>
     <meta charset="utf-8" />
@@ -12,7 +12,7 @@
     <!-- <script src="https://fb.me/react-0.14.0.js"></script>
     <script src="https://fb.me/react-dom-0.14.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser.min.js"></script> -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- Bootstrap CSS -->
@@ -33,19 +33,21 @@
 
 <body>
     <div class="outerContainer">
-        <h1 class="appHeader">Chords & Lyrics</h1>
+        <h1 class="appHeader">מילים ואקורדים</h1>
         <nav class="topNavBar">
             {% if user.is_authenticated %}
-            <a href="/songeditor" class="btn btn-outline-primary navBarBtn">Home</a>
-            <a href="#" class="navBarBtn btn btn-outline-info">About</a>
+            <a href="/songeditor/heb" class="btn btn-outline-primary navBarBtn">בית</a>
+            <a href="#" class="navBarBtn btn btn-outline-info">אודות</a>
             <a href="/logout" class="navBarBtn btn btn-outline-secondary" >Logout</a>
+            
             {% else %}
-            <a href="#" class="navBarBtn btn btn-outline-info">About</a>
+            <a href="#" class="navBarBtn btn btn-outline-info">עלינו</a>
             <a href="/register" class="navBarBtn btn btn-outline-secondary">Register</a>
             <a href="/login" class="navBarBtn btn btn-outline-secondary">Login</a>
-            
+            <a id="englishBtn" href="/songeditor" class="navBarBtn btn btn-outline-secondary">English</a>
+
             {% endif %}
-            <a id="hebrewBtn" href="/songeditor/heb" class="navBarBtn btn btn-outline-secondary">עברית</a>
+            <a id="englishBtn" href="/songeditor" class="navBarBtn btn btn-outline-secondary">English</a>
         </nav>
         {% if user.is_authenticated %}
         <div class="container">

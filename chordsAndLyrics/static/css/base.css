@@ -1,3 +1,4 @@
+*:focus {outline:none !important}
 
 .outerContainer{
     display: 'flex';
@@ -57,12 +58,16 @@
     background: none;
     color: black;
     border: white thin solid;
+    outline: none;
+    cursor: pointer;
 
 }
 .removeBlockButton:hover{
     background: none;
     color: red;
     border: red thin dashed;
+    outline: none;
+    cursor: pointer;
 }
 
 .toolsBar{
@@ -77,7 +82,7 @@
 }
 
 .save_load_contianer{
-    margin-left: 23%;
+    margin-left: 7%;
     width: 50%;
     display: flex;
     flex-direction: row;
@@ -103,30 +108,36 @@
     color: rgb(21, 21, 80);
     font-weight: 500;
     margin: auto 0;
+    font-size: 0.8em;
+    border-radius: 7px;
 }
 
 .saveLoadBtn{
     width: 20%;
-    height: 100%;
+    height: 60%;
     color: rgb(63, 62, 62);
     font-weight: 300;
     cursor: pointer;
+    outline: none;
     padding: 2%;
     font-size: 0.7em;
     border: none;
+    margin: auto 0;
     
 }
 
 .saveLoadBtn:hover{
     width: 20%;
-    height: 53%;
+    height: 60%;
     color: rgb(63, 62, 62);
     border: thin solid rgb(63, 62, 62);
     font-weight: 700;
     cursor: pointer;
+    outline: none;
     padding: 2%;
     font-size: 0.7em;
     border: none;
+    margin: auto 0;
 }
 
 .lyric_block{
@@ -150,6 +161,8 @@
     border: none;
     color: white;
     font-size: 1.35em;
+    outline: none;
+    cursor: pointer;
 }
 
 .addLineButton:hover{
@@ -157,12 +170,15 @@
     border: none;
     color: rgb(37, 154, 37);
     font-size: 1.35em;
+
+    cursor: pointer;
 }
 
 .autoScrollImg{
-    height: 90%;
-    margin-left: 21%;
+    height: 70%;
     cursor: all-scroll;
+    outline: none;
+    margin: auto 0;
 }
 
 #eraserButton{
@@ -170,6 +186,7 @@
     border: none;
     background: none;
     cursor: pointer;
+    outline: none;
 }
 
 #eraserButton{
@@ -177,6 +194,7 @@
     border: none;
     background: none;
     cursor: pointer;
+    outline: none;
     font-weight: 500;
 }
 
@@ -191,6 +209,7 @@
     padding: 0.2%;
     margin: 0 0.1%;
     cursor: pointer;
+    outline: none;
 
 }
 
@@ -211,11 +230,11 @@
 }
 
 .darkBlueFont{
-    color: rgb(80, 221, 219);
+    color: rgb(96, 180, 235);
     font-size: 1.1em;
 }
 .darkBlueFont:hover{
-    color: rgb(43, 140, 138);
+    color: rgb(80, 221, 219);
     text-decoration: none;
 
 }
@@ -232,12 +251,53 @@
     color: black;
     font-size: 0.9em;
     margin: 0.4vh 0;
+    height: 2em;
 }
 
 .loadingOption:hover{
-    color: rgb(47, 126, 121);
-    font-weight: 250;
-    font-size: 0.925em;
+    color: rgb(56, 218, 24);
+    font-weight: 300;
+    font-size: 0.9em;
     margin: 0.4vh 0;
+    height: 2em;
     text-decoration: none;
+}
+
+.material-icons{
+    font-size: 1.5em;
+}
+
+.playableChordsSelector{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.playableChordBtn{
+    margin: auto 1%;
+    font-size: 0.6em;
+
+}
+
+.playableChordLabel{
+    font-size: 0.6em;
+    width: 35%;
+    margin: auto 0;
+}
+
+.pointerContainer{
+    color: rgb(232, 121, 232);
+
+}
+.visibleClass{
+    visibility: visible;
+    opacity: 1;
+    color: rgb(172, 59, 172);
+}
+
+.invisibleClass{
+    color: rgb(232, 121, 232);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.7s, color 0.5s, linear;
 }

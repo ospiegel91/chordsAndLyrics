@@ -1,0 +1,20 @@
+{% extends 'songeditor/hebrew/base.html' %}
+{% block homePage %}
+
+    <div class="menuOfSongs">
+        <a class="darkBlueFont" href="/songeditor/heb/newsong">התחל שיר חדש עכשיו!</a>
+        <div class="pointerContainer"><i class="fas fa-hand-pointer"></i></div>
+        <h3 class="inMenuHeading">השירים הקודמים ששמרת:</h3>
+
+        {% for song in song_list%}
+        {% if song.direction == "ltr" %}
+        <a dir="ltr" class="loadingOption" href="/songeditor/loadedsong/{{ song.id }}">{{ song.title }}</a>
+        {% else %}
+        <a dir="rtl" class="loadingOption" href="/songeditor/heb/loadedsong/{{ song.id }}">{{ song.title }}</a>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}

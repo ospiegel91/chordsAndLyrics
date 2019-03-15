@@ -1,0 +1,17 @@
+{% extends 'songeditor/hebrew/base.html' %}
+{% block newSongForm %}
+
+         <form method="post" action="/songeditor/heb/newsong/editNew/" id="newSongFormId" class="newSongForm">{% csrf_token %}
+          <div class="form-group">
+            <label style="margin-left: 96%;" for="song_title_input">שם:</label>
+            <input type="text" name="song_title_input" class="form-control" id="song_title_input" placeholder="שם השיר">
+          </div>
+          <div class="form-group">
+            <label style="margin-left: 86%;" for="song_lyrics_input">הדבק מילות שיר</label>
+            <textarea class="form-control" name="song_lyrics_input" id="song_lyrics_input" rows="10"></textarea>
+          </div>
+        <button style="margin-left: 85%;" class="btn btn-outline-primary" type="submit">הלחן/אקורדים</button>
+    </form>
+
+
+{% endblock %}

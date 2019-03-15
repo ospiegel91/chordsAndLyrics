@@ -3,13 +3,14 @@
 
     <div class="menuOfSongs">
         <a class="darkBlueFont" href="/songeditor/newsong">Start New Song Now!</a>
+        <div class="pointerContainer"><i class="fas fa-hand-pointer"></i></div>
         <h3 class="inMenuHeading">Your previously saved songs:</h3>
 
         {% for song in song_list%}
         {% if song.direction == "ltr" %}
-        <a class="losadingOption" href="/songeditor/loadedsong/{{ song.id }}">{{ song.title }}</a>
+        <a class="loadingOption" href="/songeditor/loadedsong/{{ song.id }}">{{ song.title }}</a>
         {% else %}
-        <a class="loadingOption" href="/heb/songeditor/loadedsong/{{ song.id }}">{{ song.title }}</a>
+        <a class="loadingOption" href="/songeditor/heb/loadedsong/{{ song.id }}">{{ song.title }}</a>
         {% endif %}
         {% endfor %}
     </div>
