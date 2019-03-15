@@ -19,6 +19,7 @@ $(document).ready(function () {
         $("#eraserButton").click(turnEraserOnOff);
         $("#saveBtn").click(saveSong);
         $(".newChord").click(onChordClickEvents);
+        $(".playableChordBtn").change(setPlayableChord);
     }
 
     function addEmptyNewLine(e){
@@ -105,22 +106,33 @@ $(document).ready(function () {
     function setCurrentChord(event){
         if (event.which == 13 || event.keyCode == 13) {
             currentChord = event.target.value;
-            alert(currentChord);
+            $(".currentChordBox").text(currentChord);
         }
+    }
+
+    function setPlayableChord(){
+            $("#chordInput").val("");
+            let root = $("#selectRoot").val();
+            let extension = $("#selectChordExtension").val();
+            currentChord = `${root}${extension}`;
+            $(".currentChordBox").text(currentChord);
+        
     }
 
     function placeChord(event){
         if(currentChord == "" || isEraserOn==1){
             return;
         }
+        console.log(event.target);
+        if(event.target.classList.contains("newChord")){
+            return;
+        }
         let chordPlacingBlock = $(this);
         let xPos = event.pageX;
-        let yPos = event.pageY;
         let newChord = $("<button>+</button>");
         yPos = chordPlacingBlock.css('top');
         newChord.addClass('newChord');
         newChord.css('left',`${xPos}px`);
-        // newChord.css('top',`${yPos}px`);
         newChord.text(`${currentChord}`);
         newChord.click(onChordClickEvents)
         chordPlacingBlock.append(newChord);
@@ -132,13 +144,14 @@ $(document).ready(function () {
             return;
         }else{
             let chordClickedOn =  event.target.textContent;
-            console.log(chordClickedOn);
             checkIfChordIsPlayable(chordClickedOn);
         }
 
     }
 
     function playChord(chordToBePlayed){
+        let allAudioTags = $("audio");
+        allAudioTags.remove();
         var audioElement = document.createElement("audio");
         var head = document.getElementsByTagName('body')[0];
         audioElement.type = "audio/mp3";
@@ -219,9 +232,6 @@ $(document).ready(function () {
             });
         });
 
-//        new Awesomplete(input, {
-//            list: allChordVariationsWithBases
-//        });
     }
 
     function prepDataForSave(){
@@ -229,7 +239,6 @@ $(document).ready(function () {
         let songObject = {};
         songObject["song_title"] = songTitle;
         songObject["dir"] = $("HTML")[0].dir;
-        console.log("direction is"+songObject["dir"]);
         songObject["lyricBlocks"] = [];
 
         let allSongLyricsBoxes = $(".lyrics_line_block");
@@ -252,16 +261,15 @@ $(document).ready(function () {
             songObject["lyricBlocks"].push(lyricBoxObject);
 
         }
-        console.log(songObject);
         return JSON.stringify(songObject);
     }
 
 
     var csrftoken = Cookies.get('csrftoken');
-    console.log("This is csrf token"+csrftoken);
+
     function saveSong(){
         let songData = prepDataForSave();
-        console.log("type of song data is"+(typeof songData));
+
         $.ajax({
             type: "POST",
             url: '/songeditor/saveSong/',
@@ -280,12 +288,5 @@ $(document).ready(function () {
             },
           });
     }
-
-
-
-
-
-
-
 
 });
