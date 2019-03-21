@@ -54,6 +54,19 @@
     align-items: center;
 
 }
+
+.chordsBlockOff{
+    height: 34px;
+    background-color: white;
+    width: 90%;
+    border: none;
+    margin-left: 1%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
 .removeBlockButton{
     background: none;
     color: black;
@@ -114,8 +127,7 @@
     font-weight: 300;
     cursor: pointer;
     outline: none;
-    padding: 2%;
-    font-size: 0.7em;
+    font-size: 0.65em;
     border: none;
     margin: auto 0;
     
@@ -129,8 +141,7 @@
     font-weight: 700;
     cursor: pointer;
     outline: none;
-    padding: 2%;
-    font-size: 0.7em;
+    font-size: 0.65em;
     border: none;
     margin: auto 0;
 }
@@ -302,14 +313,17 @@
 .flexDir{
     display: flex;
     flex-direction: row;
+    width: 17%;
 }
 .currentChordContainer{
     margin: 0;
+    width: 11%;
 }
 
 .currentChordContainer p{
     margin: 0;
     font-size: 0.4em;
+    text-align: center;
 }
 
 .currentChordBox{
@@ -321,4 +335,36 @@
     border: black 1px solid;
     text-align: center;
     padding-top: 10%; 
+    border-radius: 5px;
+}
+
+.playModecontainer p{
+    font-size: 0.5em;
+    margin: 0;
+}
+
+.scaleControllerContainer{
+    display: flex;
+    flex-direction: row;
+    font-size: 0.5em;
+    align-items: center;
+    width: 9%;
+    text-align: center;
+}
+
+.arrowFalfTonBtn{
+    margin: 0 6%;
+    cursor: pointer;
+}
+
+.arrowFalfTonBtn:hover{
+    color: rgb(109, 240, 92);
+    margin: 0 6%;
+    cursor: pointer;
+}
+
+.addBasslabel{
+    font-size: 0.5em;
+    width: 68%;
+    margin: auto 0;
 }

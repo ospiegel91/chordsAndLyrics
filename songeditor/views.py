@@ -3,28 +3,35 @@ from django.http import HttpResponse
 from .models import Song
 from django.contrib.auth.models import User
 import json
+from django.shortcuts import redirect
+import chordsAndLyrics.settings
 # Create your views here.
 def home(request):
-    current_user = request.user
-    all_user_songs = Song.objects.filter(user=current_user)
-    for song in all_user_songs:
-        print(song)
-    context = {
-        'song_list': all_user_songs
-    }
-    return render(request, 'songeditor/home.html', context)
+    if request.user.is_authenticated:
+        current_user = request.user
+        all_user_songs = Song.objects.filter(user=current_user)
+        for song in all_user_songs:
+            print(song)
+        context = {
+            'song_list': all_user_songs
+        }
+        return render(request, 'songeditor/home.html', context)
+    else:
+        return redirect("/login")
 
 
 def homeHeb(request):
-    current_user = request.user
-    all_user_songs = Song.objects.filter(user=current_user)
-    for song in all_user_songs:
-        print(song)
-    context = {
-        'song_list': all_user_songs
-    }
-    return render(request, 'songeditor/hebrew/home.html', context)
-
+    if request.user.is_authenticated:
+        current_user = request.user
+        all_user_songs = Song.objects.filter(user=current_user)
+        for song in all_user_songs:
+            print(song)
+        context = {
+            'song_list': all_user_songs
+        }
+        return render(request, 'songeditor/hebrew/home.html', context)
+    else:
+        return redirect("/login")
 
 def loadSong(request, songid):
     print("this is id "+str(songid))
