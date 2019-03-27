@@ -325,7 +325,15 @@ $(document).ready(function () {
   }
 
   function checkIfChordIsPlayable(clickedChord) {
-    const playableChords = ["Am", "Em", "G"];
+    let playableChords = [];
+    const playableChordBases = ["E","E#","Eb","F","F#","Fb","G","G#","Gb","A","A#","Ab","B","B#","Bb","C","C#","Cb","D","D#","Db",]
+    const playableChordExtensions = ["", "m", "mMaj7", "maj7","7","m7","m6","6","sus9","dim7","ø", "m5+","5+","6-9","7-9","4","sus4"];
+    for(var i=0; i<playableChordBases.length; i++){
+        for(var j=0; j<playableChordExtensions.length; j++){
+            playableChords.push(`${playableChordBases[i]}${playableChordExtensions[j]}`);
+        }
+    }
+    console.log(playableChords);
     playableChords.forEach(function (chord) {
       if (chord == clickedChord) {
         playChord(clickedChord);
